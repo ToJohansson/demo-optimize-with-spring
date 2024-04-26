@@ -3,6 +3,7 @@ package com.tobiasjohansson.demooptimize.services;
 import com.tobiasjohansson.demooptimize.models.Product;
 import com.tobiasjohansson.demooptimize.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,6 +19,7 @@ public class ProductService {
 
 
     // GET
+    @Cacheable("products")
     public List<Product> getAllProducts(){
         return productRepository.findAll();
     }
